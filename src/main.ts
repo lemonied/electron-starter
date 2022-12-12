@@ -18,7 +18,8 @@ async function createWindow() {
     resizable: true,
     useContentSize: true,
   });
-  await win.loadURL(`file:///${path.join(__dirname, '../renderer/index.html')}`);// 可以替换成网络地址，https://baidu.com
+  // 可以替换成网络地址，http://127.0.0.1:3000
+  await win.loadURL(`file:///${path.join(__dirname, '../renderer/index.html')}`);
   return win;
 }
 
