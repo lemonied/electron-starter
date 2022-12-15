@@ -1,5 +1,5 @@
 import { ipcMain, app, BrowserWindow } from 'electron';
-import process from 'process';
+import * as path from 'path';
 
 export function registerCommunication(win: BrowserWindow) {
   ipcMain.handle('cpu-usage', async () => {
@@ -13,4 +13,9 @@ export function registerCommunication(win: BrowserWindow) {
   ipcMain.handle('maximize', async () => {
     return win.maximize();
   });
+
+  ipcMain.handle('lib-url', async () => {
+    return `file:///${path.join(__dirname, '../lib')}`;
+  });
+
 }

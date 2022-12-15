@@ -3,13 +3,13 @@ import * as path from 'path';
 import { registerCommunication } from './communication';
 import { registerShortcut } from './shortcut';
 
-async function createWindow() {
+function createWindow() {
   const win = new BrowserWindow({
     width: 1020,
     height: 600,
     webPreferences: {
       backgroundThrottling: false,
-      contextIsolation: false,
+      contextIsolation: true,
       preload: path.resolve(__dirname, 'preload.js'),
     },
     fullscreen: true,
@@ -19,7 +19,7 @@ async function createWindow() {
     useContentSize: true,
   });
   // 可以替换成网络地址，http://127.0.0.1:3000
-  await win.loadURL(`file:///${path.join(__dirname, '../renderer/index.html')}`);
+  win.loadURL(`file:///${path.join(__dirname, '../renderer/index.html')}`);
   return win;
 }
 
